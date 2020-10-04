@@ -1,5 +1,11 @@
 import React, { useRef } from "react";
-import { View, Text, TouchableWithoutFeedback } from "react-native";
+import {
+  View,
+  Text,
+  TouchableWithoutFeedback,
+  TouchableOpacity,
+  StyleSheet,
+} from "react-native";
 import { Container, Button } from "../../helperComponents";
 import SocialLogin from "../Components/SocialLogin";
 import TextInput from "../Components/Form/TextInput";
@@ -51,7 +57,8 @@ const Login = (props) => {
     setFieldValue,
   } = useFormik({
     initialValues: { email: "", password: "", remember: true },
-    onSubmit: (values) => console.log(values),
+    onSubmit: (values) =>
+      props.navigation.navigate("Drawer", { screen: "FashionIdeas" }),
     validationSchema: LoginSchema,
   });
 
@@ -114,7 +121,13 @@ const Login = (props) => {
             onSubmitEditing={() => handleSubmit()}
           />
 
-          <View style={{ marginTop: 10 }}>
+          <View
+            style={{
+              marginTop: 10,
+              justifyContent: "flex-start",
+              alignItems: "flex-start",
+            }}
+          >
             <CheckBox
               label="Remember me"
               checked={values.remember}
@@ -132,17 +145,34 @@ const Login = (props) => {
               onPress={handleSubmit}
               label="Log into your account"
             />
-
-            <Button
-              variant="transparent"
-              onPress={() => props.navigation.navigate("ForgotPassword")}
-              label="Forgot Password ?"
-            />
+            <View style={{ marginTop: 10 }}>
+              <TouchableOpacity
+                onPress={() => props.navigation.navigate("ForgotPassword")}
+              >
+                <Text style={styles.label}>Forgot Password ?</Text>
+              </TouchableOpacity>
+            </View>
           </View>
         </View>
       </View>
     </Container>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    borderRadius: 30,
+    height: 50,
+    width: 245,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  label: {
+    //  fontFamily: 'SFProText-Regular',
+    fontSize: 15,
+    textAlign: "center",
+    marginTop: 10,
+  },
+});
 
 export default Login;

@@ -48,7 +48,7 @@ const PasswordChange = (props) => {
             marginBottom: 5,
           }}
         >
-          Forgot Password ?
+          Your password has changed successfully
         </Text>
         <Text
           style={{
@@ -58,7 +58,7 @@ const PasswordChange = (props) => {
             marginBottom: 10,
           }}
         >
-          Enter the email address associated with your account
+          Press the button to Login Again
         </Text>
 
         <View style={{ alignItems: "center", marginTop: 20 }}>

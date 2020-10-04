@@ -9,49 +9,69 @@ import {
   ForgotPassword,
   PasswordChange,
 } from "./src/Authentication";
+import { FashionIdeas } from "./src/Home";
 import { SafeAreaProvider } from "react-native-safe-area-context";
-const AuthenticationStack = createStackNavigator();
+import { createDrawerNavigator } from "@react-navigation/drawer";
 
+const Stack = createStackNavigator();
+const Drawer = createDrawerNavigator();
 // const fonts = {
 //   "SFProText-Bold": require("./assets/fonts/SF-Pro-Text-Bold.otf"),
 //   "SFProText-Semibold": require("./assets/fonts/SF-Pro-Text-Semibold.otf"),
 //   "SFProText-Regular": require("./assets/fonts/SF-Pro-Text-Regular.otf"),
 // };
 
+const HomeNavigator = () => {
+  return (
+    <Drawer.Navigator>
+      <Drawer.Screen
+        name="FashionIdeas"
+        component={FashionIdeas}
+        navigator={navigator}
+      />
+    </Drawer.Navigator>
+  );
+};
+
 const AuthenticationNavigator = () => {
   return (
-    <AuthenticationStack.Navigator headerMode="none">
-      <AuthenticationStack.Screen
+    <Stack.Navigator headerMode="none">
+      <Stack.Screen
         name="Onboarding"
         component={Onboarding}
         navigator={navigator}
       />
-      <AuthenticationStack.Screen
-        name="Welcome"
-        component={Welcome}
-        navigator={navigator}
-      />
-      <AuthenticationStack.Screen
-        name="Login"
-        component={Login}
-        navigator={navigator}
-      />
-      <AuthenticationStack.Screen
-        name="SignUp"
-        component={SignUp}
-        navigator={navigator}
-      />
-      <AuthenticationStack.Screen
+      <Stack.Screen name="Welcome" component={Welcome} navigator={navigator} />
+      <Stack.Screen name="Login" component={Login} navigator={navigator} />
+      <Stack.Screen name="SignUp" component={SignUp} navigator={navigator} />
+      <Stack.Screen
         name="ForgotPassword"
         component={ForgotPassword}
         navigator={navigator}
       />
-      <AuthenticationStack.Screen
+      <Stack.Screen
         name="PasswordChange"
         component={PasswordChange}
         navigator={navigator}
       />
-    </AuthenticationStack.Navigator>
+    </Stack.Navigator>
+  );
+};
+
+const NestedScreen = () => {
+  return (
+    <Stack.Navigator headerMode="none">
+      <Stack.Screen
+        name="AuthStack"
+        component={AuthenticationNavigator}
+        navigator={navigator}
+      />
+      <Stack.Screen
+        name="Drawer"
+        component={HomeNavigator}
+        navigator={navigator}
+      />
+    </Stack.Navigator>
   );
 };
 
@@ -66,7 +86,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <SafeAreaProvider>
-        <AuthenticationNavigator />
+        <NestedScreen />
       </SafeAreaProvider>
     </NavigationContainer>
   );
