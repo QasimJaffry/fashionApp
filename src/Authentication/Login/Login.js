@@ -58,7 +58,7 @@ const Login = (props) => {
   } = useFormik({
     initialValues: { email: "", password: "", remember: true },
     onSubmit: (values) =>
-      props.navigation.navigate("Drawer", { screen: "FashionIdeas" }),
+      props.navigation.navigate("Drawer", { screen: "OutfitIdeas" }),
     validationSchema: LoginSchema,
   });
 

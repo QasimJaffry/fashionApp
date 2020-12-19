@@ -1,1 +1,1 @@
-export { default as FashionIdeas } from "./FashionIdeas/FashionIdeas";
+export { default as OutfitIdeas } from "./FashionIdeas/FashionIdeas";

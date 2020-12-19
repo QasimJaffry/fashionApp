@@ -9,7 +9,7 @@ import {
   ForgotPassword,
   PasswordChange,
 } from "./src/Authentication";
-import { FashionIdeas } from "./src/Home";
+import { OutfitIdeas } from "./src/Home";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 
@@ -25,8 +25,8 @@ const HomeNavigator = () => {
   return (
     <Drawer.Navigator>
       <Drawer.Screen
-        name="FashionIdeas"
-        component={FashionIdeas}
+        name="OutfitIdeas"
+        component={OutfitIdeas}
         navigator={navigator}
       />
     </Drawer.Navigator>

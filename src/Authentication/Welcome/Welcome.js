@@ -51,16 +51,17 @@ const Welcome = (props) => {
         style={{
           flex: 1,
           borderBottomRightRadius: 75,
-          backgroundColor: "#838478",
+          //  backgroundColor: "brown",
           justifyContent: "flex-end",
           alignItems: "center",
           overflow: "hidden",
+          borderBottomLeftRadius: 75,
         }}
       >
         <Image
           source={picture.uri}
           style={{
-            width: width - BORDER_RADIUS,
+            width: width,
             height: ((width - BORDER_RADIUS) * picture.height) / picture.width,
           }}
         />
@@ -68,7 +69,7 @@ const Welcome = (props) => {
       <View style={{ flex: 1, borderTopLeftRadius: 75 }}>
         <View
           style={{
-            backgroundColor: "#838478",
+            // backgroundColor: "black",
             position: "absolute",
             top: 0,
             left: 0,
@@ -78,12 +79,12 @@ const Welcome = (props) => {
         >
           <View
             style={{
-              backgroundColor: "white",
-              borderTopLeftRadius: 75 - 25,
+              //  /   backgroundColor: "white",
+              //   borderTopLeftRadius: 75 - 25,
               flex: 1,
               alignItems: "center",
               justifyContent: "space-evenly",
-              padding: 30,
+              padding: 45,
             }}
           >
             <Text style={{ fontSize: 24, fontWeight: "bold" }}>
